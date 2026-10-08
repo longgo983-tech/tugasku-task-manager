@@ -1,0 +1,6 @@
+{
+  "name": "TugasKu - Manajemen Tugas & Pengingat Harian",
+  "description": "Aplikasi manajemen tugas produktivitas modern dengan pengingat harian dan sinkronisasi cloud.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

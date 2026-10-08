@@ -1,0 +1,131 @@
+{
+  "entities": {
+    "Task": {
+      "title": "Task",
+      "description": "A user's task item with priority, status, category, and daily reminder settings",
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string",
+          "maxLength": 128
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200
+        },
+        "description": {
+          "type": "string",
+          "maxLength": 1000
+        },
+        "category": {
+          "type": "string",
+          "enum": ["work", "personal", "study", "health", "urgent", "general"]
+        },
+        "priority": {
+          "type": "string",
+          "enum": ["low", "medium", "high", "urgent"]
+        },
+        "status": {
+          "type": "string",
+          "enum": ["pending", "in_progress", "completed"]
+        },
+        "dueDate": {
+          "type": "string",
+          "maxLength": 30
+        },
+        "dueTime": {
+          "type": "string",
+          "maxLength": 10
+        },
+        "reminderEnabled": {
+          "type": "boolean"
+        },
+        "reminderTime": {
+          "type": "string",
+          "maxLength": 10
+        },
+        "dailyRecurring": {
+          "type": "boolean"
+        },
+        "completedAt": {
+          "type": "string",
+          "maxLength": 50
+        },
+        "googleEventId": {
+          "type": "string",
+          "maxLength": 256
+        },
+        "calendarSynced": {
+          "type": "boolean"
+        },
+        "lastCalendarSync": {
+          "type": "string",
+          "maxLength": 50
+        },
+        "isDeleted": {
+          "type": "boolean"
+        },
+        "deletedAt": {
+          "type": "string",
+          "maxLength": 50
+        },
+        "createdAt": {
+          "type": "string"
+        },
+        "updatedAt": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "userId",
+        "title",
+        "category",
+        "priority",
+        "status",
+        "reminderEnabled",
+        "dailyRecurring"
+      ]
+    },
+    "UserSettings": {
+      "title": "UserSettings",
+      "description": "User preferences for daily reminders and application settings",
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string",
+          "maxLength": 128
+        },
+        "dailyReminderTime": {
+          "type": "string",
+          "maxLength": 10
+        },
+        "soundEnabled": {
+          "type": "boolean"
+        },
+        "morningBriefEnabled": {
+          "type": "boolean"
+        },
+        "updatedAt": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "userId",
+        "dailyReminderTime",
+        "soundEnabled",
+        "morningBriefEnabled"
+      ]
+    }
+  },
+  "firestore": {
+    "/users/{userId}/tasks/{taskId}": {
+      "schema": "Task",
+      "description": "Collection of tasks owned by a user"
+    },
+    "/users/{userId}/settings/{settingId}": {
+      "schema": "UserSettings",
+      "description": "User preferences and daily reminder settings"
+    }
+  }
+}
